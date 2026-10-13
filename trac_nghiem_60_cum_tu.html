@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trắc nghiệm – 60 cụm từ</title>
+<style>
+:root{--bg:#eef2f6;--ink:#14213d;--mute:#5b6b82;--card:#fff;--acc:#0f8b8d;--line:#cfd8e3;--ok:#1b7f4b;--okbg:#e2f4ea;--no:#b3261e;--nobg:#fbe7e5}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1420;--ink:#e8eef7;--mute:#93a3ba;--card:#18243a;--acc:#4fd1c5;--line:#2a3a55;--ok:#6fd6a0;--okbg:#14382a;--no:#ff9a92;--nobg:#401c1a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,"Times New Roman",serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px 14px}
+.wrap{width:100%;max-width:640px}
+h1{font-size:1.25rem;margin:0 0 10px;font-weight:700}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .25s}
+.count{color:var(--mute);font-size:.9rem;margin-bottom:12px;display:flex;justify-content:space-between}
+.q{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:24px 20px;text-align:center}
+.term{font-size:1.8rem;font-weight:700;line-height:1.25;overflow-wrap:anywhere}
+.ipa{font:1.05rem "Segoe UI","Noto Sans","Arial Unicode MS",sans-serif;color:var(--mute);margin-top:6px;overflow-wrap:anywhere}
+.ex{margin-top:10px;font-style:italic}
+.ask{color:var(--mute);font-size:.9rem;margin:18px 0 8px}
+.opts{display:grid;gap:8px;text-align:left}
+.opt{font:inherit;padding:11px 14px;border-radius:9px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:flex;gap:10px}
+.opt b{min-width:1.2em}
+.opt:hover:not(:disabled){border-color:var(--acc)}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.no{border-color:var(--no);background:var(--nobg)}
+.opt:disabled{cursor:default}
+.fb{min-height:1.5em;margin:12px 0 0;font-weight:700}
+.b{font:inherit;font-size:.95rem;padding:9px 16px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;margin:4px 4px 0 0}
+.b:hover{background:var(--ink);color:var(--bg)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.res{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:22px 20px}
+.res h2{margin:0 0 8px}
+.res ul{padding-left:18px;margin:10px 0}
+.res li{margin-bottom:6px}
+.hide{display:none}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+@media(max-width:480px){.term{font-size:1.45rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Trắc nghiệm – 60 cụm từ</h1>
+<div id="quiz">
+<div class="bar"><i id="pr"></i></div>
+<div class="count"><span id="ct"></span><span id="sc"></span></div>
+<div class="q">
+<div class="term" id="t"></div>
+<div class="ipa" id="i"></div>
+<div class="ex" id="e"></div>
+<div class="ask">Chọn nghĩa đúng:</div>
+<div class="opts" id="o"></div>
+<div class="fb" id="fb" role="status"></div>
+</div>
+<button class="b hide" id="nx">Câu tiếp</button>
+</div>
+<div class="res hide" id="res"></div>
+</div>
+<script>
+const RAW=`shape|ʃeɪp|định hình|động từ|Education shapes our future
+play a crucial role in V-ing|pleɪ ə ˈkruʃəl roʊl ɪn|đóng vai trò then chốt trong việc...|cụm động từ|Teachers play a crucial role in shaping students' character
+foster closer ties|ˈfɔstər ˈkloʊsər taɪz|thắt chặt quan hệ|cụm động từ|The two countries want to foster closer ties
+attract foreign direct investment|əˈtrækt ˈfɔrən dəˈrɛkt ɪnˈvɛstmənt|thu hút đầu tư trực tiếp nước ngoài|cụm động từ|Viet Nam wants to attract foreign direct investment
+favorable conditions|ˈfeɪvərəbəl kənˈdɪʃənz|điều kiện thuận lợi|cụm danh từ|The government creates favorable conditions for businesses to thrive
+contribute to the overall prosperity of the region|kənˈtrɪbjut tu ði ˌoʊvərˈɔl prɑˈspɛrəti ʌv ðə ˈridʒən|góp phần vào sự thịnh vượng chung của khu vực|cụm động từ|Trade helps contribute to the overall prosperity of the region
+mitigate the impacts of climate change|ˈmɪtəˌɡeɪt ði ˈɪmpækts ʌv ˈklaɪmət tʃeɪndʒ|giảm thiểu tác động của biến đổi khí hậu|cụm động từ|We must mitigate the impacts of climate change
+consist of / comprise / include|kənˈsɪst ʌv / kəmˈpraɪz / ɪnˈklud|gồm có (consist of, comprise không có "of")|động từ|ASEAN consists of ten member states
+a sense of unity|ə sɛns ʌv ˈjunəti|tinh thần đoàn kết|cụm danh từ|Sport creates a sense of unity among people
+heritage|ˈhɛrətɪdʒ|di sản|danh từ|Ha Long Bay is a world cultural heritage
+represent|ˌrɛprɪˈzɛnt|đại diện|động từ|She represents her class at the meeting
+inclusive growth|ɪnˈklusɪv ɡroʊθ|tăng trưởng bao trùm, toàn diện|cụm danh từ|The country aims for inclusive growth
+apparent ≈ evident ≈ obvious ≈ noticeable ≈ visible ≈ conspicuous|əˈpɛrənt / ˈɛvədənt / ˈɑbviəs / ˈnoʊtɪsəbəl / ˈvɪzəbəl / kənˈspɪkjuəs|rõ ràng, dễ thấy (trái nghĩa: unnoticeable, vague)|tính từ|It was apparent that he was tired
+adverse|ædˈvɜrs|bất lợi (trái nghĩa: advantageous – có lợi)|tính từ|Bad weather has an adverse effect on crops
+negligible|ˈnɛɡlɪdʒəbəl|không đáng kể|tính từ|The cost was negligible
+S's hobby is + V-ing|ɛs ˈhɑbi ɪz|sở thích của ai là làm gì|cấu trúc|My hobby is reading books
+Do/Would you mind + V-ing?|du / wʊd ju maɪnd|bạn có phiền làm gì không?|cấu trúc|Would you mind opening the window
+succeed in + V-ing|səkˈsid ɪn|thành công trong việc (= manage to V)|cụm động từ|She succeeded in passing the exam
+apologize for + V-ing / be sorry for|əˈpɑləˌdʒaɪz fɔr / bi ˈsɑri fɔr|xin lỗi vì đã làm gì|cụm động từ|He apologized for being late
+take part in = participate in|teɪk pɑrt ɪn / pɑrˈtɪsəˌpeɪt ɪn|tham gia vào|cụm động từ|Many students take part in the contest
+be beneficial to sb/sth|bi ˌbɛnəˈfɪʃəl tu|có lợi cho ai/cái gì|cụm tính từ|Exercise is beneficial to our health
+non-profit organization|nɑn ˈprɑfət ˌɔrɡənəˈzeɪʃən|tổ chức phi lợi nhuận|cụm danh từ|She works for a non-profit organization
+unforgettable ≈ memorable|ˌʌnfərˈɡɛtəbəl / ˈmɛmərəbəl|khó quên, đáng nhớ|tính từ|It was an unforgettable trip
+depend on >< be independent of|dɪˈpɛnd ɑn / bi ˌɪndɪˈpɛndənt ʌv|phụ thuộc vào >< độc lập với|cụm động từ|Children depend on their parents
+promote >< forbid|prəˈmoʊt / fərˈbɪd|thúc đẩy >< cấm|động từ|The campaign promotes healthy living
+be related to|bi rɪˈleɪtɪd tu|liên quan tới|cụm tính từ|This topic is related to the environment
+set goals|sɛt ɡoʊlz|đặt mục tiêu (achieve/reach a goal: đạt mục tiêu)|cụm động từ|Students should set goals for their study
+leadership skills|ˈlidərˌʃɪp skɪlz|kỹ năng lãnh đạo (lỗi hay gặp: leader skills)|cụm danh từ|The club helps us develop leadership skills
+raise awareness of|reɪz əˈwɛrnəs ʌv|nâng cao nhận thức về|cụm động từ|We raise awareness of plastic pollution
+suggest + V-ing|səɡˈdʒɛst|gợi ý làm gì|động từ|She suggested going to the park
+be qualified for|bi ˈkwɑləˌfaɪd fɔr|đủ tiêu chuẩn cho|cụm tính từ|He is qualified for the job
+stand for|stænd fɔr|viết tắt của, tượng trưng cho|cụm động từ|ASEAN stands for Association of Southeast Asian Nations
+association|əˌsoʊsiˈeɪʃən|hiệp hội|danh từ|ASEAN is an association of ten countries
+aim to V|eɪm tu|nhằm mục đích|cụm động từ|The project aims to protect the environment
+means|minz|phương tiện, cách thức|danh từ|Trains are a cheap means of transport
+work on sth|wɜrk ɑn|giải quyết, làm việc về điều gì|cụm động từ|We are working on a new project
+strive to V|straɪv tu|nỗ lực, cố gắng (= try to)|cụm động từ|They strive to protect the environment
+summit|ˈsʌmɪt|hội nghị thượng đỉnh|danh từ|The ASEAN summit was held in Ha Noi
+diverse and dynamic|dɪˈvɜrs ænd daɪˈnæmɪk|đa dạng và năng động|cụm tính từ|ASEAN is a diverse and dynamic region
+offer opportunities for|ˈɔfər ˌɑpərˈtunətiz fɔr|mang lại cơ hội cho|cụm động từ|The program offers opportunities for young people
+strategic location|strəˈtidʒɪk loʊˈkeɪʃən|vị trí chiến lược|cụm danh từ|Viet Nam has a strategic location in Southeast Asia
+emergence as a hub|ɪˈmɜrdʒəns æz ə hʌb|sự nổi lên như một trung tâm (hub: trung tâm)|cụm danh từ|The city's emergence as a hub of trade is clear
+mutual benefits|ˈmjutʃuəl ˈbɛnəfɪts|lợi ích chung|cụm danh từ|The deal brings mutual benefits to both countries
+bilateral / multilateral relations|baɪˈlætərəl / ˌmʌltiˈlætərəl rɪˈleɪʃənz|quan hệ song phương / đa phương|cụm danh từ|The two countries strengthen bilateral relations
+counterpart|ˈkaʊntərˌpɑrt|đối tác (người/tổ chức cùng vị trí ở nước khác)|danh từ|The minister met his counterpart from Japan
+maritime boundaries / geographical proximity|ˈmærəˌtaɪm ˈbaʊndriz / ˌdʒiəˈɡræfɪkəl prɑkˈsɪməti|ranh giới biển / sự gần gũi về địa lý|cụm danh từ|Geographical proximity makes trade easier
+facilitate|fəˈsɪləˌteɪt|tạo điều kiện thuận lợi, thúc đẩy|động từ|New roads facilitate trade
+extensive|ɪkˈstɛnsɪv|rộng rãi, sâu rộng|tính từ|They have extensive experience in teaching
+peaceful coexistence / non-interference|ˈpisfəl ˌkoʊɪɡˈzɪstəns / ˌnɑn ˌɪntərˈfɪrəns|chung sống hòa bình / không can thiệp|cụm danh từ|ASEAN values peaceful coexistence
+place importance on|pleɪs ɪmˈpɔrtns ɑn|coi trọng|cụm động từ|Schools place importance on good manners
+dispute(s)|dɪˈspjut|tranh chấp (territorial disputes: tranh chấp lãnh thổ)|danh từ|The countries solved the dispute peacefully
+diplomatic channels|ˌdɪpləˈmætɪk ˈtʃænəlz|kênh ngoại giao|cụm danh từ|The problem was solved through diplomatic channels
+seek to V|sik tu|tìm cách làm gì|cụm động từ|They seek to improve relations
+forge robust trade ties|fɔrdʒ roʊˈbʌst treɪd taɪz|xây dựng quan hệ thương mại vững mạnh|cụm động từ|The two countries forge robust trade ties
+market access|ˈmɑrkɪt ˈækˌsɛs|sự tiếp cận thị trường|cụm danh từ|The agreement improves market access for farmers
+disaster management|dɪˈzæstər ˈmænɪdʒmənt|quản lý thiên tai|cụm danh từ|ASEAN works together on disaster management
+transnational crime prevention|trænzˈnæʃənəl kraɪm prɪˈvɛnʃən|phòng chống tội phạm xuyên quốc gia|cụm danh từ|Transnational crime prevention needs cooperation
+mechanism(s)|ˈmɛkəˌnɪzəm|cơ chế, cơ cấu|danh từ|ASEAN has a mechanism to solve problems
+rivalry|ˈraɪvəlri|sự ganh đua, cạnh tranh|danh từ|There is friendly rivalry between the two teams
+impede = hinder|ɪmˈpid / ˈhɪndər|cản trở (trái nghĩa: facilitate)|động từ|Bad roads impede trade`;
+const base=RAW.split("\n").map(l=>{const a=l.split("|");return{t:a[0],i:"["+a[1]+"]",m:a[2].replace(/\s*\(.*?\)\s*/g," ").trim(),pos:a[3],e:a[4]+"."}});
+const L="ABCD";
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+let deck,n,score,wrong;
+const $=id=>document.getElementById(id);
+function start(list){deck=shuffle(list);n=0;score=0;wrong=[];$("quiz").classList.remove("hide");$("res").classList.add("hide");show()}
+function show(){
+  const c=deck[n];
+  $("t").textContent=c.t;$("i").textContent=c.i;$("e").textContent=c.e;
+  $("ct").textContent=`Câu ${n+1}/${deck.length}`;$("sc").textContent=`Đúng ${score}`;
+  $("pr").style.width=n/deck.length*100+"%";
+  const same=shuffle(base.filter(x=>x.t!==c.t&&x.m!==c.m&&x.pos===c.pos));
+  const other=shuffle(base.filter(x=>x.t!==c.t&&x.m!==c.m&&x.pos!==c.pos));
+  const ds=[];for(const x of same.concat(other)){if(ds.length<3&&!ds.includes(x.m))ds.push(x.m)}
+  const opts=shuffle([c.m].concat(ds));
+  $("o").innerHTML="";$("fb").textContent="";$("fb").style.color="";$("nx").classList.add("hide");
+  opts.forEach((m,k)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML="<b>"+L[k]+".</b><span></span>";b.lastChild.textContent=m;
+    b.onclick=()=>answer(b,m===c.m,c);
+    $("o").appendChild(b);
+  });
+}
+function answer(btn,ok,c){
+  [...$("o").children].forEach(b=>{b.disabled=true;if(b.lastChild.textContent===c.m)b.classList.add("ok")});
+  if(ok){score++;$("fb").textContent="Chính xác!";$("fb").style.color="var(--ok)"}
+  else{btn.classList.add("no");wrong.push(c);$("fb").textContent="Chưa đúng. Đáp án: "+c.m;$("fb").style.color="var(--no)"}
+  $("sc").textContent=`Đúng ${score}`;
+  $("nx").textContent=n===deck.length-1?"Xem kết quả":"Câu tiếp";$("nx").classList.remove("hide");$("nx").focus();
+}
+$("nx").onclick=()=>{if(n<deck.length-1){n++;show()}else finish()};
+function finish(){
+  $("quiz").classList.add("hide");const r=$("res");r.classList.remove("hide");
+  r.innerHTML=`<h2>Kết quả: ${score}/${deck.length}</h2>`+(wrong.length?"<p>Các cụm cần ôn lại:</p><ul>"+wrong.map(w=>`<li><b></b> – <span></span></li>`).join("")+"</ul>":"<p>Con trả lời đúng tất cả!</p>");
+  [...r.querySelectorAll("li")].forEach((li,k)=>{li.children[0].textContent=wrong[k].t;li.children[1].textContent=wrong[k].m});
+  if(wrong.length){const a=document.createElement("button");a.className="b";a.textContent="Làm lại các câu sai";const w=wrong.slice();a.onclick=()=>start(w);r.appendChild(a)}
+  const b=document.createElement("button");b.className="b";b.textContent="Làm lại từ đầu";b.onclick=()=>start(base);r.appendChild(b);
+}
+start(base);
+</script>
+</body>
+</html>
